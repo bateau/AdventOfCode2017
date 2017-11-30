@@ -1,0 +1,17 @@
+{
+  "name": "mloughry_aoc2017",
+  "version": "1.0.0",
+  "description": "MLoughry's solutions for Advent of Code 2017",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Loughry <miclo@microsoft.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/mz": "^0.0.32",
+    "@types/node": "^8.0.53",
+    "mz": "^2.7.0",
+    "typescript": "^2.6.2"
+  }
+}
