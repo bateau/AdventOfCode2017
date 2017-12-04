@@ -4,12 +4,12 @@ async function findSolution(inputFilePath: string = './input.txt') {
     const input = parseInt(await fs.readFile(require.resolve(inputFilePath), 'utf8'));
 
     console.log(`Part1: ${solvePart1(input)}`);
+
+    // Part 2: Lookup on OEIS: https://oeis.org/A141481/b141481.txt
 }
 
 function solvePart1(input: number) : number {
-    // Find which ring the input number is on
-    // Each ring has 8*(ring number) elements on it
-    var { remainder, ring } = findCellOffsetDimensions(input);
+    let { remainder, ring } = findCellOffsetDimensions(input);
 
     const quarterRingSize = ring * 2 || 1;
     let offset = (remainder - (ring - 1)) % quarterRingSize;
@@ -23,6 +23,8 @@ interface MemoryCell {
 }
 
 function findCellOffsetDimensions(input: number) {
+    // Find which ring the input number is on
+    // Each ring has 8*(ring number) elements on it
     let ring = 0;
     let step = 0;
     let countdown = input - 1;
@@ -46,6 +48,8 @@ function solvePart2(input: number): number {
     return 0;
 
     function findNeighbors(cell: number): number[] {
+        let { remainder, ring } = findCellOffsetDimensions(input);
+
         // TODO: Finish
         return [];
     }
