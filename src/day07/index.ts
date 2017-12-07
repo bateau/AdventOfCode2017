@@ -6,6 +6,9 @@ async function findSolution(inputFilePath: string = './input.txt') {
     let rootNode: TowerTreeNode = buildTree(input);
 
     console.log(`Part 1: ${rootNode.id}`);
+
+    // Spit out tree and manually search for part 2
+    console.log(JSON.stringify(rootNode, null, 2));
 }
 
 interface TowerTreeNode {
@@ -13,8 +16,20 @@ interface TowerTreeNode {
     weight: number;
     childrenIds: string[];
     childNodes: TowerTreeNode[];
-    childWeights: {[nodeId: string]: number}
+    childWeights: {[nodeId: string]: number};
+    totalWeight?: number;
 }
+
+// function findUnbalancedNode(node: TowerTreeNode): TowerTreeNode {
+//     let balancedChildWeight = (node.totalWeight! - node.weight) / node.childNodes.length;
+
+//     if (node.childNodes.reduce((isChildImbalanced, child) => isChildImbalanced || child.weight != balancedChildWeight, false)) {
+//         return node;
+//     }
+
+//     // Find unbalanced child
+
+// }
 
 function calculateTotalWeights(node: TowerTreeNode): number {
     let totalWeight = node.weight;
@@ -24,6 +39,7 @@ function calculateTotalWeights(node: TowerTreeNode): number {
         totalWeight += weight;
     });
 
+    node.totalWeight = totalWeight;
     return totalWeight;
 }
 
