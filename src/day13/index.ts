@@ -38,7 +38,7 @@ function solvePart2(firewalls: Firewall[]) {
 
 function isPacketEverCaughtAfterDelay(firewalls: Firewall[], delay: number): boolean {
     for (let i = 0; i < firewalls.length; i++) {
-        if (isPacketCaughtByFirewall(firewalls[i])) {
+        if (isPacketCaughtByFirewall(firewalls[i], delay)) {
             return true;
         }
     }
