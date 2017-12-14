@@ -5,6 +5,7 @@ const inputRegex = /(\d+): (\d+)/;
 interface Firewall {
     depth: number;
     range: number;
+    period: number;
 }
 
 async function findSolution(inputFilePath: string = './input.txt') {
@@ -49,18 +50,20 @@ function parseInputIntoFirewalls(input: string) {
     return input
         .split('\n')
         .map(line => {
-            let [match, depth, range] = inputRegex.exec(line)!;
+            let [match, depthStr, rangeStr] = inputRegex.exec(line)!;
+            let depth = parseInt(depthStr);
+            let range = parseInt(rangeStr)
             return {
-                depth: parseInt(depth),
-                range: parseInt(range),
+                depth,
+                range,
+                period: 2 * (range - 1)
             };
-        });
+        })
+        .sort((a, b) => a.period - b.period); // Optimization for part 2
 }
 
 function isPacketCaughtByFirewall(firewall: Firewall, delay: number = 0): boolean {
-    let { depth, range } = firewall;
-
-    let period = Math.max(2 * (range - 1), 1);
+    let { depth, period } = firewall;
 
     return (depth + delay) % period === 0;
 }
