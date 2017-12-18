@@ -1,5 +1,5 @@
 import * as fs from 'mz/fs';
-import { knotHash } from '../day10/index';
+import { knotHash } from '../day10/knotHash';
 
 async function findSolution(inputFilePath: string = './input.txt') {
     const input = await fs.readFile(require.resolve(inputFilePath), 'utf8');
