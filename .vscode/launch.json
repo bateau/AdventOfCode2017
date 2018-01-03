@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "D:\\source\\GitHub\\AdventOfCode2017\\src\\day14\\index.js",
+            "program": "D:\\source\\GitHub\\AdventOfCode2017\\src\\day15\\index.js",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
